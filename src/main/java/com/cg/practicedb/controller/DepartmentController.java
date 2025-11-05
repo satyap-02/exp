@@ -17,6 +17,6 @@ public class DepartmentController {
 
     @GetMapping
     public List<Department> getDepartmentsByLocation(@PathVariable Long locationId) {
-        return departmentRepository.findBylocation_id(locationId);
+        return departmentRepository.findByLocation_Id(locationId);
     }
 }

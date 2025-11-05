@@ -1,9 +1,10 @@
-
 package com.cg.practicedb.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "departments")
@@ -19,10 +20,23 @@ public class Department {
     @Column(name = "manager_id")
     private Long managerId;
 
+//    @ManyToOne
+//    @JoinColumn(name = "location_id")
+//    @JsonBackReference
+//    private Location location;
+//
+//    // ✅ Added One-to-Many relationship with Employee
+//    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+//    private List<Employee> employees;
+    
     @ManyToOne
-    @JoinColumn(name = "location_id")
     @JsonBackReference
+    @JoinColumn(name = "location_id")
     private Location location;
+
+    @OneToMany(mappedBy = "department")
+    @JsonManagedReference
+    private List<Employee> employees;
 
     // Getters and Setters
     public Long getId() { return id; }
@@ -36,5 +50,7 @@ public class Department {
 
     public Location getLocation() { return location; }
     public void setLocation(Location location) { this.location = location; }
-}
 
+    public List<Employee> getEmployees() { return employees; }
+    public void setEmployees(List<Employee> employees) { this.employees = employees; }
+}

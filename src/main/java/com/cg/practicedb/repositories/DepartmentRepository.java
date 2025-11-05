@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.cg.practicedb.entity.Department;
 
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
-    List<Department> findBylocation_id(Long locationId);
+    List<Department> findByLocation_Id(Long locationId);
 }
 
 

@@ -28,7 +28,11 @@ public class Location {
     @Column(name = "country_id")
     private String countryId;
 
-    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
+//    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private List<Department> departments;
+    
+    @OneToMany(mappedBy = "location")
     @JsonManagedReference
     private List<Department> departments;
 
